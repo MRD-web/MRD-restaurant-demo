@@ -34,11 +34,10 @@ jobs:
           version: 10
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build Ember Roast
-        working-directory: ember-roast
-        run: pnpm run build
+        run: pnpm --filter @workspace/ember-roast build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
