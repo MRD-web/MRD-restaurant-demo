@@ -33,8 +33,9 @@ jobs:
         with:
           version: 10
 
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+      - name: Install Ember Roast dependencies
+        working-directory: ember-roast
+        run: pnpm install --no-frozen-lockfile --prod=false
 
       - name: Build Ember Roast
         working-directory: ember-roast
