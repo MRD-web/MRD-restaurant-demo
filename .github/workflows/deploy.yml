@@ -34,15 +34,12 @@ jobs:
           version: 10
 
       - name: Install dependencies
-        run: |
-          cd ember-roast
-          pnpm install --no-frozen-lockfile
-
-      - name: Check Vite
         working-directory: ember-roast
-        run: pnpm exec vite --version
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm add -D vite @vitejs/plugin-react typescript
 
-      - name: Build Ember Roast
+      - name: Build
         working-directory: ember-roast
         run: pnpm run build
 
@@ -54,6 +51,6 @@ jobs:
         with:
           path: ./ember-roast/dist
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
