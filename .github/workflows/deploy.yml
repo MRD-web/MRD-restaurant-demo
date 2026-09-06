@@ -33,9 +33,14 @@ jobs:
         with:
           version: 10
 
-      - name: Install Ember Roast dependencies
+      - name: Install dependencies
+        run: |
+          cd ember-roast
+          pnpm install --no-frozen-lockfile
+
+      - name: Check Vite
         working-directory: ember-roast
-        run: pnpm install --no-frozen-lockfile --prod=false
+        run: pnpm exec vite --version
 
       - name: Build Ember Roast
         working-directory: ember-roast
